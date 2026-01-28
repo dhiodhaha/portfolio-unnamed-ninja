@@ -67,7 +67,7 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(
       <div
         ref={ref}
         data-id={project.id}
-        className="min-h-[70vh] md:min-h-screen flex flex-col justify-center p-[var(--section-padding-x-mobile)] md:pl-[var(--spacing-10)] md:pr-[var(--spacing-24)]"
+        className="min-h-[50vh] md:min-h-screen flex flex-col justify-center p-[var(--section-padding-x-mobile)] md:pl-[var(--spacing-10)] md:pr-[var(--spacing-24)]"
       >
         <div className="group cursor-pointer">
           {/* Top Info Row */}
