@@ -1,6 +1,43 @@
-import { WORKS } from '@/data/projects'
+import { useState } from 'react'
+import { WORKS, EXPLORATIONS, type Project } from '@/data/projects'
+import { WorksPreviewModal } from './WorksPreviewModal'
 
 export function WorksSection() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const ALL_WORKS = [...WORKS, ...EXPLORATIONS]
+
+  const handleOpenModal = (project: Project) => {
+    setSelectedProject(project)
+    setIsModalOpen(true)
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+    setTimeout(() => setSelectedProject(null), 300) // Wait for animation
+  }
+
+  const handleNext = () => {
+    if (!selectedProject) return
+    const currentIndex = ALL_WORKS.findIndex((p) => p.id === selectedProject.id)
+    if (currentIndex < ALL_WORKS.length - 1) {
+      setSelectedProject(ALL_WORKS[currentIndex + 1])
+    }
+  }
+
+  const handlePrev = () => {
+    if (!selectedProject) return
+    const currentIndex = ALL_WORKS.findIndex((p) => p.id === selectedProject.id)
+    if (currentIndex > 0) {
+      setSelectedProject(ALL_WORKS[currentIndex - 1])
+    }
+  }
+
+  const currentIndex = selectedProject 
+    ? ALL_WORKS.findIndex((p) => p.id === selectedProject.id) 
+    : -1
+
   return (
     <section className="w-full bg-neutral-200 px-[var(--section-padding-x-mobile)] md:px-[var(--section-padding-x-desktop)] py-[var(--spacing-24)] border-t border-border">
       <div className="max-w-[var(--container-xl)] mx-auto">
@@ -15,12 +52,16 @@ export function WorksSection() {
 
         {/* Works Masonry Grid */}
         <div className="columns-2 md:columns-4 gap-[var(--spacing-4)] md:gap-[var(--spacing-6)]">
-          {WORKS.map((work) => (
-            <div key={work.id} className="group cursor-pointer break-inside-avoid mb-[var(--spacing-6)]">
+          {ALL_WORKS.map((work, index) => (
+            <div 
+              key={work.id} 
+              onClick={() => handleOpenModal(work)}
+              className="group cursor-pointer break-inside-avoid mb-[var(--spacing-6)]"
+            >
               {/* Image Container - Intrinsic aspect ratio */}
               <div className="relative w-full overflow-hidden rounded-[var(--radius-sm)] mb-[var(--spacing-4)] bg-neutral-300">
                 <img
-                  src={`${work.img}&w=800&auto=format,compress&fm=webp`}
+                  src={work.category === 'Exploration' ? work.img : `${work.img}&w=800&auto=format,compress&fm=webp`}
                   alt={work.title}
                   width={800}
                   height={1200}
@@ -33,7 +74,7 @@ export function WorksSection() {
               {/* Title & Info */}
               <div className="flex items-baseline gap-[var(--spacing-2)]">
                 <span className="font-tech text-[length:var(--text-xs)] text-destructive uppercase tracking-[var(--tracking-widest)] font-[var(--font-weight-bold)]">
-                  ({work.id + 1}) 
+                  ({index + 1}) 
                 </span>
                 <h3 className="text-[length:var(--text-sm)] font-[var(--font-weight-black)] uppercase tracking-[var(--tracking-wider)] text-foreground group-hover:text-destructive transition-colors duration-[var(--duration-slow)]">
                   {work.title}
@@ -43,6 +84,16 @@ export function WorksSection() {
           ))}
         </div>
       </div>
+
+      <WorksPreviewModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        currentProject={selectedProject}
+        onNext={handleNext}
+        onPrev={handlePrev}
+        hasNext={currentIndex < ALL_WORKS.length - 1}
+        hasPrev={currentIndex > 0}
+      />
     </section>
   )
 }
