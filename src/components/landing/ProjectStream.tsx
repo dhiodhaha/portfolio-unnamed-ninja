@@ -1,5 +1,9 @@
-import { forwardRef, useImperativeHandle, useRef } from 'react'
+import { forwardRef, useImperativeHandle, useRef, useEffect } from 'react'
 import { PROJECTS, type Project } from '@/data/projects'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 export interface ProjectStreamRef {
   projectRefs: (HTMLDivElement | null)[]
@@ -8,13 +12,35 @@ export interface ProjectStreamRef {
 export const ProjectStream = forwardRef<ProjectStreamRef>(
   function ProjectStream(_, ref) {
     const projectRefs = useRef<(HTMLDivElement | null)[]>([])
+    const containerRef = useRef<HTMLElement>(null)
 
     useImperativeHandle(ref, () => ({
       projectRefs: projectRefs.current,
     }))
 
+    // Snap Scrolling Logic
+    useEffect(() => {
+      const ctx = gsap.context(() => {
+        ScrollTrigger.create({
+          trigger: containerRef.current,
+          start: 'top top',
+          end: 'bottom bottom',
+          snap: {
+            snapTo: 1 / (PROJECTS.length - 1),
+            duration: 0, // Very short window
+            delay: 0, // No delay
+            ease: 'power1.out', // Fast easing
+            inertia: false, // Snap immediately
+            directional: true, // Snap in direction of scroll
+          },
+        })
+      })
+
+      return () => ctx.revert()
+    }, [])
+
     return (
-      <section className="w-full md:w-[50%] relative z-0 bg-white">
+      <section ref={containerRef} className="w-full md:w-[50%] relative z-0 bg-white">
         {PROJECTS.map((project, index) => (
           <ProjectCard
             key={project.id}
@@ -39,7 +65,7 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(
       <div
         ref={ref}
         data-id={project.id}
-        className="min-h-screen flex flex-col justify-center p-8 md:p-10"
+        className="min-h-[70vh] md:min-h-screen flex flex-col justify-center p-[var(--section-padding-x-mobile)] md:pl-[var(--spacing-10)] md:pr-[var(--spacing-24)]"
       >
         <div className="group cursor-pointer">
           {/* Top Info Row */}

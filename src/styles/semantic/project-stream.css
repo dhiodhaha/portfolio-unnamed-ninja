@@ -1,0 +1,40 @@
+/* Project Stream Section Semantic Tokens */
+
+:root {
+  /* Project Card Layout */
+  --project-card-aspect-ratio: 1 / 1;
+  --project-card-border-radius: 0.5rem;
+  --project-card-border-color: oklch(0.92 0.004 286.32);
+  --project-card-border-width: 1px;
+
+  /* Project Node Typography */
+  --project-node-font: 'VT323', monospace;
+  --project-node-size: 0.75rem;
+  --project-node-color: oklch(0.55 0.01 285);
+  --project-node-letter-spacing: 0.15em;
+
+  /* Project Title */
+  --project-title-size: clamp(1.125rem, 3vw, 1.5rem);
+  --project-title-color: oklch(0.141 0.005 285.823);
+  --project-title-weight: 700;
+
+  /* Project Interaction */
+  --project-hover-scale: 1.05;
+  --project-transition-duration: 200ms;
+  --project-transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Project Image Effects */
+  --project-image-filter-grayscale: grayscale(100%);
+  --project-image-filter-opacity: 1;
+  --project-image-filter-blur: blur(0px);
+
+  /* Project Card Spacing */
+  --project-card-padding: 1.5rem;
+  --project-card-gap: 1rem;
+}
+
+.dark {
+  --project-card-border-color: oklch(0.274 0.006 286.033);
+  --project-node-color: oklch(0.75 0.01 285);
+  --project-title-color: oklch(0.985 0 0);
+}

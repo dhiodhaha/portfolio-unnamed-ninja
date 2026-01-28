@@ -1,11 +1,6 @@
 import { Link } from '@tanstack/react-router'
 
-interface NavbarProps {
-  isInStream: boolean
-  activeProject: number
-}
-
-export function Navbar({ isInStream, activeProject }: NavbarProps) {
+export function Navbar() {
   return (
     <nav className="fixed top-0 left-0 w-full z-50 p-6 md:p-10 flex justify-between items-center pointer-events-none mix-blend-difference text-white">
       <Link
@@ -30,16 +25,6 @@ export function Navbar({ isInStream, activeProject }: NavbarProps) {
             {item}
           </a>
         ))}
-      </div>
-
-      <div className="nav-item pointer-events-auto">
-        <div
-          className={`bg-white text-black px-5 py-2 text-[10px] uppercase tracking-widest font-black rounded-sm transition-all duration-500 ${
-            isInStream ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
-          }`}
-        >
-          Stream: 0{activeProject}
-        </div>
       </div>
     </nav>
   )

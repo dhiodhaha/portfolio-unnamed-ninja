@@ -1,0 +1,42 @@
+/* Hero Section Semantic Tokens */
+
+:root {
+  /* Hero Section Background & Styling */
+  --hero-bg: oklch(0.96 0.001 286.375);
+  --hero-border-color: oklch(0 0 0 / 0.05);
+  --hero-noise-opacity: 0.03;
+
+  /* Hero Heading */
+  --hero-heading-size: clamp(5rem, 18vw, 15rem);
+  --hero-heading-color: oklch(0.141 0.005 285.823);
+  --hero-heading-opacity: 0.9;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --hero-heading-size: clamp(6rem, 23vw, 18rem);
+  }
+
+  /* Hero Description */
+  --hero-description-size: clamp(1rem, 5vw, 1.5rem);
+  --hero-description-color: oklch(0.55 0.01 285);
+  --hero-description-max-width: 56rem;
+
+  /* Hero Stats */
+  --hero-stats-font: 'VT323', monospace;
+  --hero-stats-size: clamp(0.625rem, 2vw, 0.875rem);
+  --hero-stats-letter-spacing: 0.2em;
+
+  /* Hero Spacing */
+  --hero-padding-x: 1.5rem;
+  --hero-padding-x-md: 2.5rem;
+  --hero-padding-top: 8rem;
+}
+
+.dark {
+  /* Hero Section Dark Mode */
+  --hero-bg: oklch(0.15 0.005 285.823);
+  --hero-heading-color: oklch(0.985 0 0);
+  --hero-description-color: oklch(0.75 0.01 285);
+  --hero-border-color: oklch(1 0 0 / 0.1);
+}

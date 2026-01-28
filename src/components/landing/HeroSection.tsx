@@ -6,7 +6,7 @@ import { BackgroundNoise } from "./BackgroundNoise";
 export function HeroSection() {
   return (
     <section
-      className="relative h-screen w-full flex flex-col justify-between pb-0 z-40 overflow-hidden border-b"
+      className="relative h-screen w-full flex flex-col justify-end pb-0 z-40 overflow-hidden border-b"
       style={{
         backgroundColor: "var(--hero-bg)",
         borderBottomColor: "var(--hero-border-color)",
@@ -17,7 +17,7 @@ export function HeroSection() {
     >
       <HeroDescription />
 
-      <div className="w-full z-10">
+      <div className="w-full z-10 pb-[2vw] relative">
         <HeroStats />
         <HeroHeading />
       </div>

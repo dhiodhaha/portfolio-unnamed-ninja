@@ -2,7 +2,7 @@ import { CLIENTS } from '@/data/projects'
 
 export function MissionLog() {
   return (
-    <aside className="w-full md:w-[50%] h-auto md:h-screen p-8 md:p-12 flex flex-col justify-between bg-white sticky top-0 z-10 md:overflow-hidden">
+    <aside className="w-full md:w-[50%] h-auto md:h-screen p-8 md:p-12 flex flex-col justify-between bg-white md:sticky md:top-0 z-10 md:overflow-hidden">
       
       {/* Main Content */}
       <div className="flex-1 flex flex-col justify-center max-w-lg">

@@ -1,0 +1,59 @@
+/* Design System Color Tokens */
+
+:root {
+  /* Neutral Scale - Grays in OKLch */
+  --color-neutral-50: oklch(0.99 0.001 286);
+  --color-neutral-100: oklch(0.97 0.001 286);
+  --color-neutral-200: oklch(0.92 0.004 286.32);
+  --color-neutral-300: oklch(0.88 0.005 286);
+  --color-neutral-400: oklch(0.75 0.008 286);
+  --color-neutral-500: oklch(0.55 0.016 285.938);
+  --color-neutral-800: oklch(0.274 0.006 286.033);
+  --color-neutral-900: oklch(0.21 0.006 285.885);
+  --color-neutral-950: oklch(0.141 0.005 285.823);
+
+  /* Brand Colors */
+  --color-brand-blue: oklch(0.646 0.222 41.116);
+  --color-brand-green: oklch(0.769 0.188 70.08);
+
+  /* Semantic Colors */
+  --color-accent: oklch(0.967 0.001 286.375);
+  --color-success: oklch(0.769 0.188 70.08);
+  --color-destructive: oklch(0.577 0.245 27.325);
+  --color-warning: oklch(0.828 0.189 84.429);
+  --color-info: oklch(0.6 0.118 184.704);
+
+  /* Opacity Scale */
+  --opacity-ghost: 0.03;
+  --opacity-subtle: 0.1;
+  --opacity-muted: 0.3;
+  --opacity-low: 0.4;
+  --opacity-medium: 0.6;
+  --opacity-high: 0.8;
+  --opacity-solid: 0.9;
+  --opacity-full: 1;
+}
+
+.dark {
+  /* Neutral Scale - Dark mode adjustments */
+  --color-neutral-50: oklch(0.141 0.005 285.823);
+  --color-neutral-100: oklch(0.21 0.006 285.885);
+  --color-neutral-200: oklch(0.274 0.006 286.033);
+  --color-neutral-300: oklch(0.35 0.007 286);
+  --color-neutral-400: oklch(0.5 0.012 286);
+  --color-neutral-500: oklch(0.705 0.015 286.067);
+  --color-neutral-800: oklch(0.92 0.004 286.32);
+  --color-neutral-900: oklch(0.97 0.001 286);
+  --color-neutral-950: oklch(0.99 0.001 286);
+
+  /* Brand Colors - Dark mode variants */
+  --color-brand-blue: oklch(0.488 0.243 264.376);
+  --color-brand-green: oklch(0.645 0.246 16.439);
+
+  /* Semantic Colors - Dark mode variants */
+  --color-accent: oklch(0.274 0.006 286.033);
+  --color-success: oklch(0.645 0.246 16.439);
+  --color-destructive: oklch(0.396 0.141 25.723);
+  --color-warning: oklch(0.627 0.265 303.9);
+  --color-info: oklch(0.696 0.17 162.48);
+}

@@ -1,12 +1,11 @@
 export function HeroDescription() {
   return (
-    <div className="flex-1 flex flex-col items-center justify-center z-10">
+    <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] md:w-[50vw] z-10">
       <p
         className="text-center leading-relaxed tracking-tight"
         style={{
           fontSize: "var(--hero-description-size)",
           color: "var(--hero-description-color)",
-          maxWidth: "var(--hero-description-max-width)",
           fontWeight: 500,
         }}
       >
