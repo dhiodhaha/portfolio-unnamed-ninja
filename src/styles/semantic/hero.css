@@ -10,12 +10,6 @@
   --hero-heading-size: clamp(5rem, 18vw, 15rem);
   --hero-heading-color: oklch(0.141 0.005 285.823);
   --hero-heading-opacity: 0.9;
-}
-
-@media (min-width: 768px) {
-  :root {
-    --hero-heading-size: clamp(6rem, 23vw, 18rem);
-  }
 
   /* Hero Description */
   --hero-description-size: clamp(1rem, 5vw, 1.5rem);
@@ -31,6 +25,12 @@
   --hero-padding-x: 1.5rem;
   --hero-padding-x-md: 2.5rem;
   --hero-padding-top: 8rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --hero-heading-size: clamp(6rem, 23vw, 18rem);
+  }
 }
 
 .dark {
