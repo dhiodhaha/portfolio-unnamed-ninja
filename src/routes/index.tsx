@@ -87,7 +87,7 @@ function LandingPage() {
   }, [isLoading])
 
   return (
-    <div className="bg-[#fcfcfc] text-[#111] font-['Geist'] selection:bg-black selection:text-white">
+    <main className="bg-[#fcfcfc] text-[#111] font-['Geist'] selection:bg-black selection:text-white">
       <BootLoader ref={loaderRef} />
       <Navbar />
       <HeroSection />
@@ -107,6 +107,6 @@ function LandingPage() {
       <WorksSection />
       
       <TerminateSection />
-    </div>
+    </main>
   )
 }

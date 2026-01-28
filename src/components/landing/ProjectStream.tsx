@@ -45,6 +45,7 @@ export const ProjectStream = forwardRef<ProjectStreamRef>(
           <ProjectCard
             key={project.id}
             project={project}
+            isPriority={index === 0}
             ref={(el) => {
               projectRefs.current[index] = el
             }}
@@ -57,10 +58,11 @@ export const ProjectStream = forwardRef<ProjectStreamRef>(
 
 interface ProjectCardProps {
   project: Project
+  isPriority?: boolean
 }
 
 const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(
-  function ProjectCard({ project }, ref) {
+  function ProjectCard({ project, isPriority }, ref) {
     return (
       <div
         ref={ref}
@@ -70,7 +72,7 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(
         <div className="group cursor-pointer">
           {/* Top Info Row */}
           <div className="flex justify-between items-center mb-6">
-            <span className="font-tech text-2xl text-neutral-300 uppercase">
+            <span className="font-tech text-2xl text-neutral-500 uppercase">
               NODE_0{project.id}
             </span>
           </div>
@@ -78,8 +80,12 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(
           {/* Image Container */}
           <div className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-100 rounded-sm mb-12">
             <img
-              src={project.img}
+              src={`${project.img}&w=1200&auto=format,compress&fm=webp`}
               alt={project.title}
+              width={1200}
+              height={900}
+              loading={isPriority ? "eager" : "lazy"}
+              decoding="async"
               className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
             />
           </div>

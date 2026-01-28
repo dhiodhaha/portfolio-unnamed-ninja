@@ -39,6 +39,10 @@ export const Route = createRootRoute({
         crossOrigin: 'anonymous',
       },
       {
+        rel: 'dns-prefetch',
+        href: 'https://fonts.gstatic.com',
+      },
+      {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=VT323&display=swap',
       },

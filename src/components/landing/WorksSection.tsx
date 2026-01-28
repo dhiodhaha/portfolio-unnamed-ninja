@@ -20,8 +20,12 @@ export function WorksSection() {
               {/* Image Container - Intrinsic aspect ratio */}
               <div className="relative w-full overflow-hidden rounded-[var(--radius-sm)] mb-[var(--spacing-4)] bg-neutral-300">
                 <img
-                  src={work.img}
+                  src={`${work.img}&w=800&auto=format,compress&fm=webp`}
                   alt={work.title}
+                  width={800}
+                  height={1200}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-auto object-cover grayscale group-hover:grayscale-0 transform transition-transform duration-[var(--duration-slower)] ease-[var(--easing-out)] group-hover:scale-110 will-change-transform"
                 />
               </div>
