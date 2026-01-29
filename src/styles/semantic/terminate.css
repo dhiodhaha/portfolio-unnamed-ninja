@@ -1,0 +1,36 @@
+/* Terminate Section Semantic Tokens */
+
+:root {
+  /* Terminate Section Background */
+  --terminate-bg: oklch(0.141 0.005 285.823);
+  --terminate-text-color: oklch(0.985 0 0);
+
+  /* Terminate Section Spacing */
+  --terminate-padding-x: 1.5rem;
+  --terminate-padding-y: 3rem;
+
+  /* Terminate Heading */
+  --terminate-heading-size: clamp(1.5rem, 5vw, 2.5rem);
+  --terminate-heading-color: oklch(0.985 0 0);
+  --terminate-heading-weight: 700;
+
+  /* Terminate Body Text */
+  --terminate-body-size: clamp(0.875rem, 2vw, 1rem);
+  --terminate-body-color: oklch(0.75 0.01 285);
+  --terminate-body-max-width: 60ch;
+
+  /* Terminate Interactive Elements */
+  --terminate-interactive-size: clamp(0.875rem, 2vw, 1rem);
+  --terminate-interactive-color: oklch(0.646 0.222 41.116);
+  --terminate-interactive-hover-color: oklch(0.488 0.243 264.376);
+  --terminate-interactive-underline: underline;
+}
+
+.dark {
+  --terminate-bg: oklch(0.985 0 0);
+  --terminate-text-color: oklch(0.141 0.005 285.823);
+  --terminate-heading-color: oklch(0.141 0.005 285.823);
+  --terminate-body-color: oklch(0.55 0.01 285);
+  --terminate-interactive-color: oklch(0.646 0.222 41.116);
+  --terminate-interactive-hover-color: oklch(0.488 0.243 264.376);
+}

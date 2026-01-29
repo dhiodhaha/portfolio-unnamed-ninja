@@ -1,0 +1,33 @@
+/* Navbar Section Semantic Tokens */
+
+:root {
+  /* Navbar Background & Sizing */
+  --navbar-bg: oklch(1 0 0);
+  --navbar-height: 4rem;
+  --navbar-padding-x: 1.5rem;
+  --navbar-padding-y: 1rem;
+
+  /* Navbar Logo */
+  --navbar-logo-height: 2rem;
+  --navbar-logo-width: auto;
+
+  /* Navbar Links */
+  --navbar-link-size: 0.875rem;
+  --navbar-link-color: oklch(0.141 0.005 285.823);
+  --navbar-link-hover-color: oklch(0.55 0.01 285);
+
+  /* Navbar Visual Effects */
+  --navbar-blend-mode: difference;
+  --navbar-z-index: var(--z-navigation);
+
+  /* Navbar Border */
+  --navbar-border-color: oklch(0.92 0.004 286.32);
+  --navbar-border-width: 1px;
+}
+
+.dark {
+  --navbar-bg: oklch(0.15 0.005 285.823);
+  --navbar-link-color: oklch(0.985 0 0);
+  --navbar-link-hover-color: oklch(0.75 0.01 285);
+  --navbar-border-color: oklch(0.274 0.006 286.033);
+}

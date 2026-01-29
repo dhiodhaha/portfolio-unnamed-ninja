@@ -3,6 +3,7 @@ import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 
 import appCss from '../styles.css?url'
+import { SmoothScroll } from '../components/landing/SmoothScroll'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -38,6 +39,10 @@ export const Route = createRootRoute({
         crossOrigin: 'anonymous',
       },
       {
+        rel: 'dns-prefetch',
+        href: 'https://fonts.gstatic.com',
+      },
+      {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=VT323&display=swap',
       },
@@ -49,7 +54,11 @@ export const Route = createRootRoute({
 })
 
 function RootComponent() {
-  return <Outlet />
+  return (
+    <SmoothScroll>
+      <Outlet />
+    </SmoothScroll>
+  )
 }
 
 function RootDocument({ children }: { children: React.ReactNode }) {

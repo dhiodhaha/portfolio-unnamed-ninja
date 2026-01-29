@@ -1,0 +1,48 @@
+/* Design System Animation Tokens */
+
+:root {
+  /* CSS Durations */
+  --duration-instant: 0ms;
+  --duration-fastest: 75ms;
+  --duration-faster: 100ms;
+  --duration-fast: 150ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+  --duration-slower: 500ms;
+  --duration-slowest: 1500ms;
+
+  /* GSAP Durations */
+  --gsap-duration-fast: 0.6;
+  --gsap-duration-normal: 1;
+  --gsap-duration-slow: 1.2;
+  --gsap-duration-slower: 1.5;
+
+  /* CSS Easings */
+  --easing-linear: linear;
+  --easing-in: cubic-bezier(0.4, 0, 1, 1);
+  --easing-out: cubic-bezier(0, 0, 0.2, 1);
+  --easing-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-back-in: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  --easing-back-out: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  /* GSAP Easings */
+  --gsap-easing-power2-out: power2.out;
+  --gsap-easing-power4-out: power4.out;
+  --gsap-easing-expo-in-out: expo.inOut;
+  --gsap-easing-back-out: back.out(1.7);
+
+  /* Stagger Intervals */
+  --stagger-fast: 0.05;
+  --stagger-normal: 0.1;
+  --stagger-slow: 0.2;
+
+  /* Transition Presets */
+  --transition-opacity: opacity var(--duration-normal) var(--easing-in-out);
+  --transition-transform: transform var(--duration-normal) var(--easing-in-out);
+  --transition-colors: color var(--duration-normal) var(--easing-in-out), background-color var(--duration-normal) var(--easing-in-out), border-color var(--duration-normal) var(--easing-in-out);
+  --transition-all: all var(--duration-normal) var(--easing-in-out);
+}
+
+.dark {
+  /* Animation tokens are mode-agnostic */
+}

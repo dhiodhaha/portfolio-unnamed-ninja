@@ -9,6 +9,8 @@ import {
   MissionLog,
   ProjectStream,
   TerminateSection,
+  ScrollProgress,
+  WorksSection,
   type BootLoaderRef,
   type ProjectStreamRef,
 } from '@/components/landing'
@@ -17,7 +19,6 @@ export const Route = createFileRoute('/')({ component: LandingPage })
 
 function LandingPage() {
   const [isLoading, setIsLoading] = useState(true)
-  const [activeProject, setActiveProject] = useState(0)
   const [isInStream, setIsInStream] = useState(false)
 
   const loaderRef = useRef<BootLoaderRef>(null)
@@ -63,7 +64,7 @@ function LandingPage() {
       )
   }, [isLoading])
 
-  // Intersection observers for stream section and projects
+  // Intersection observers for stream section
   useEffect(() => {
     if (isLoading) return
 
@@ -76,37 +77,19 @@ function LandingPage() {
       { threshold: 0.1 }
     )
 
-    const projectObserver = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            const id = entry.target.getAttribute('data-id')
-            if (id) setActiveProject(Number.parseInt(id))
-          }
-        }
-      },
-      { threshold: 0.5 }
-    )
-
     if (streamTriggerRef.current) {
       streamObserver.observe(streamTriggerRef.current)
     }
 
-    const projectRefs = projectStreamRef.current?.projectRefs ?? []
-    for (const ref of projectRefs) {
-      if (ref) projectObserver.observe(ref)
-    }
-
     return () => {
       streamObserver.disconnect()
-      projectObserver.disconnect()
     }
   }, [isLoading])
 
   return (
-    <div className="bg-[#fcfcfc] text-[#111] font-['Geist'] selection:bg-black selection:text-white">
+    <main className="bg-[#fcfcfc] text-[#111] font-['Geist'] selection:bg-black selection:text-white">
       <BootLoader ref={loaderRef} />
-      <Navbar isInStream={isInStream} activeProject={activeProject} />
+      <Navbar />
       <HeroSection />
 
       {/* Split area: Mission Log & Project Stream */}
@@ -118,7 +101,12 @@ function LandingPage() {
         <ProjectStream ref={projectStreamRef} />
       </div>
 
+      {/* Scroll Progress Indicator */}
+      <ScrollProgress containerRef={streamTriggerRef} isVisible={isInStream} />
+
+      <WorksSection />
+      
       <TerminateSection />
-    </div>
+    </main>
   )
 }

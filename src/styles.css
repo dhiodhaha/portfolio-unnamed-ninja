@@ -2,6 +2,21 @@
 
 @import 'tw-animate-css';
 
+/* Import Design System Tokens */
+@import './styles/tokens/colors.css';
+@import './styles/tokens/typography.css';
+@import './styles/tokens/spacing.css';
+@import './styles/tokens/layout.css';
+@import './styles/tokens/animation.css';
+@import './styles/tokens/effects.css';
+
+/* Import Semantic Tokens */
+@import './styles/semantic/hero.css';
+@import './styles/semantic/navbar.css';
+@import './styles/semantic/mission-log.css';
+@import './styles/semantic/project-stream.css';
+@import './styles/semantic/terminate.css';
+
 @custom-variant dark (&:is(.dark *));
 
 /* Font utilities */
@@ -10,8 +25,25 @@
 }
 
 /* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
 
 body {

@@ -2,7 +2,7 @@ import { CLIENTS } from '@/data/projects'
 
 export function MissionLog() {
   return (
-    <aside className="w-full md:w-[50%] h-auto md:h-screen p-8 md:p-12 flex flex-col justify-between bg-white sticky top-0 z-10 md:overflow-hidden">
+    <aside className="w-full md:w-[50%] h-auto md:h-screen p-8 md:p-12 flex flex-col justify-between bg-white md:sticky md:top-0 z-10 md:overflow-hidden">
       
       {/* Main Content */}
       <div className="flex-1 flex flex-col justify-center max-w-lg">
@@ -23,14 +23,14 @@ export function MissionLog() {
           </p>
 
           <div>
-            <h3 className="text-[10px] uppercase tracking-[0.3em] font-black text-neutral-400 mb-6">
+            <h3 className="text-[10px] uppercase tracking-[0.3em] font-black text-neutral-500 mb-6">
               Ecosystem Partner
             </h3>
             <div className="flex flex-wrap gap-x-6 gap-y-3">
               {CLIENTS.map((client) => (
                 <span
                   key={client}
-                  className="text-xs font-bold text-neutral-400 hover:text-black transition-colors cursor-default"
+                  className="text-xs font-bold text-neutral-500 hover:text-black transition-colors cursor-default"
                 >
                   {client}
                 </span>
@@ -43,10 +43,10 @@ export function MissionLog() {
       {/* Footer */}
       <footer className="pt-10 flex justify-between items-end">
         <div className="space-y-2">
-          <span className="block text-[10px] font-black uppercase tracking-widest text-neutral-400">
+          <span className="block text-[10px] font-black uppercase tracking-widest text-neutral-500">
             Loc: JKT / 6.2088° S
           </span>
-          <p className="text-[9px] uppercase tracking-[0.2em] font-black text-neutral-300 leading-relaxed">
+          <p className="text-[9px] uppercase tracking-[0.2em] font-black text-neutral-500 leading-relaxed">
             © 2026 UNNAMED STUDIO <br /> ENCRYPTED CONNECTION
           </p>
         </div>

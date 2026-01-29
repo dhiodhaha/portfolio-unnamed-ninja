@@ -1,0 +1,46 @@
+/* Design System Layout Tokens */
+
+:root {
+  /* Z-Index Scale */
+  --z-background: 0;
+  --z-content: 10;
+  --z-sticky: 20;
+  --z-split-section: 30;
+  --z-hero: 40;
+  --z-navigation: 50;
+  --z-modal: 60;
+  --z-overlay: 70;
+  --z-toast: 80;
+  --z-tooltip: 90;
+  --z-loader: 100;
+
+  /* Grid System */
+  --grid-columns-mobile: 1;
+  --grid-columns-tablet: 2;
+  --grid-columns-desktop: 3;
+
+  --grid-gap-sm: 1rem;
+  --grid-gap-md: 1.5rem;
+  --grid-gap-lg: 2rem;
+
+  /* Flex Gap Scales */
+  --flex-gap-xs: 0.5rem;
+  --flex-gap-sm: 1rem;
+  --flex-gap-md: 1.5rem;
+  --flex-gap-lg: 2rem;
+  --flex-gap-xl: 3rem;
+
+  /* Viewport Heights */
+  --viewport-min: 100svh;
+  --viewport-screen: 100vh;
+
+  /* Container Queries */
+  --container-query-sm: 24rem;
+  --container-query-md: 28rem;
+  --container-query-lg: 32rem;
+  --container-query-xl: 42rem;
+}
+
+.dark {
+  /* Layout tokens are mode-agnostic */
+}
