@@ -44,4 +44,5 @@ export const EXPLORATIONS: Project[] = [
   { id: 19, title: 'Experiment', category: 'Exploration', year: '2024', img: '/exploration/original-b4febdb529b8f9fec0a1e944e322cd0e.webp' },
   { id: 20, title: 'Study', category: 'Exploration', year: '2024', img: '/exploration/original-b51fb88d5481d815854d294cab2c2980.webp' },
   { id: 21, title: 'Sketch', category: 'Exploration', year: '2024', img: '/exploration/original-c53e1aa84a5ea02c0759756e575ea678.webp' },
+  { id: 22, title: 'Mataro Eyewear', category: 'Exploration', year: '2024', img: '/exploration/mataro-eyewear.webp' },
 ]
