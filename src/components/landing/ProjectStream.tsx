@@ -86,7 +86,7 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(
               height={900}
               loading={isPriority ? "eager" : "lazy"}
               decoding="async"
-              className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
+              className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ease-out"
             />
           </div>
 
