@@ -4,22 +4,28 @@ export interface Project {
   category: string
   year: string
   img: string
+  video?: string
+  link?: string
 }
 
 export const PROJECTS: Project[] = [
   {
     id: 1,
-    title: 'Cofounder Systems',
-    category: 'Autonomous Agents',
-    year: '2025',
-    img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564',
+    title: 'Devault App',
+    category: 'Smart AI Bookmark App',
+    year: '2026',
+    img: '', // Video cover or empty if autoplay
+    video: '/best/Devault App Demo.mp4',
+    link: 'http://devault.app',
   },
   {
     id: 2,
-    title: 'Pixel Garden',
-    category: 'Generative Environments',
-    year: '2024',
-    img: 'https://images.unsplash.com/photo-1633167606207-d840b5070fc2?q=80&w=2564',
+    title: 'PT Gunung Kendali',
+    category: 'LANDING PAGE',
+    year: '2025',
+    img: '',
+    video: '/best/PT GUNUNG KENDALI DOCKING SHOWCASE.mp4',
+    link: 'https://ptgunungkendalidocking.com',
   },
   {
     id: 3,

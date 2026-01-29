@@ -79,22 +79,38 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(
 
           {/* Image Container */}
           <div className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-100 rounded-sm mb-12">
-            <img
-              src={`${project.img}&w=1200&auto=format,compress&fm=webp`}
-              alt={project.title}
-              width={1200}
-              height={900}
-              loading={isPriority ? "eager" : "lazy"}
-              decoding="async"
-              className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ease-out"
-            />
+            {project.video ? (
+              <video
+                src={project.video}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ease-out"
+              />
+            ) : (
+              <img
+                src={`${project.img}&w=1200&auto=format,compress&fm=webp`}
+                alt={project.title}
+                width={1200}
+                height={900}
+                loading={isPriority ? "eager" : "lazy"}
+                decoding="async"
+                className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ease-out"
+              />
+            )}
           </div>
 
           {/* Project Details */}
           <div className="flex justify-between items-end border-t border-black/10 pt-8">
             <div>
-              <h3 className="text-4xl md:text-5xl font-black tracking-tighter uppercase leading-[0.9] mb-2">
-                {project.title}
+              <h3 className="text-4xl md:text-5xl font-black tracking-tighter uppercase leading-[0.9] mb-2 flex flex-wrap items-baseline gap-4">
+                <span>{project.title}</span>
+                {project.link && (
+                  <span className="font-tech text-xl md:text-2xl text-neutral-400 tracking-normal normal-case opacity-70">
+                    / <a href={project.link} target="_blank" rel="noopener noreferrer" className="hover:text-destructive transition-colors hover:underline decoration-1 underline-offset-4">{project.link}</a>
+                  </span>
+                )}
               </h3>
               <p className="font-tech text-xl text-neutral-400 uppercase tracking-widest">
                 {project.category}

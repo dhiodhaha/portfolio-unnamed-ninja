@@ -36,7 +36,7 @@ export function TerminateSection() {
             ref={textRef}
             className="text-3xl leading-none tracking-tighter uppercase whitespace-nowrap"
           >
-            Unnamed<span className="font-black">NINJA</span>
+            <span className="font-black">UNNAMED+</span>
           </h2>
         </div>
 
@@ -46,27 +46,27 @@ export function TerminateSection() {
               Start The Protocol
             </span>
             <p className="text-sm font-medium opacity-80 max-w-xs">
-              Header built by the legendary Levi Concrete. Site built by yours truly & Loris Itary.
+              Site engineered by Unnamed+
             </p>
             <div className="mt-8 font-black text-xl">©2026</div>
           </div>
 
           <div className="grid grid-cols-2 gap-8">
-            <div>
+            {/* <div>
               <h3 className="font-black uppercase tracking-widest text-sm mb-4">Stalk Me</h3>
               <div className="flex flex-col gap-2 text-sm font-medium opacity-80">
                 <a href="#" className="hover:opacity-100 uppercase">LinkedIn</a>
                 <a href="#" className="hover:opacity-100 uppercase">Dribbble</a>
                 <a href="#" className="hover:opacity-100 uppercase">Twitter</a>
               </div>
-            </div>
+            </div> */}
             <div>
               <h3 className="font-black uppercase tracking-widest text-sm mb-4">Say Hello</h3>
               <p className="text-sm font-medium opacity-80 mb-4">
                 We are open project.  Or simply say hello if you like the site.
               </p>
               <a href="mailto:hello@unnamed.studio" className="font-black underline decoration-2 underline-offset-4 hover:opacity-70 transition-opacity">
-                hello@unnamed.studio
+                hello@unnamed.plus
               </a>
             </div>
           </div>

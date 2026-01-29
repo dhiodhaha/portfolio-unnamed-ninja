@@ -8,10 +8,10 @@ export function Navbar() {
         className="nav-item flex items-center gap-4 pointer-events-auto cursor-pointer group"
       >
         <div className="w-8 h-8 bg-white flex items-center justify-center rounded-sm group-hover:rotate-90 transition-transform duration-500">
-          <div className="w-3 h-3 border border-black rotate-45" />
+           <span className="text-black text-2xl font-black leading-none pb-1">+</span>
         </div>
         <span className="font-black tracking-tighter text-xl uppercase">
-          UNNAMED NINJA
+          UNNAMED+
         </span>
       </Link>
 

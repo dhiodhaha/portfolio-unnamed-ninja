@@ -53,9 +53,12 @@ export const Route = createRootRoute({
   shellComponent: RootDocument,
 })
 
+import { CustomCursor } from '../components/landing/CustomCursor'
+
 function RootComponent() {
   return (
     <SmoothScroll>
+      <CustomCursor />
       <Outlet />
     </SmoothScroll>
   )
