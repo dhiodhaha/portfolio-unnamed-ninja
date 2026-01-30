@@ -65,6 +65,30 @@ interface ProjectCardProps {
 const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(
   function ProjectCard({ project, isPriority }, ref) {
     const [isLoaded, setIsLoaded] = useState(false)
+    const imgRef = useRef<HTMLImageElement>(null)
+    const videoRef = useRef<HTMLVideoElement>(null)
+
+    // Handle cached images and video loading
+    useEffect(() => {
+      if (project.video) {
+        // For videos, use canplaythrough or fallback timeout
+        const video = videoRef.current
+        if (video) {
+          const handleCanPlay = () => setIsLoaded(true)
+          video.addEventListener('canplaythrough', handleCanPlay)
+          
+          // Fallback: if video doesn't fire event within 2s, show anyway
+          const timeout = setTimeout(() => setIsLoaded(true), 2000)
+          
+          return () => {
+            video.removeEventListener('canplaythrough', handleCanPlay)
+            clearTimeout(timeout)
+          }
+        }
+      } else if (imgRef.current?.complete) {
+        setIsLoaded(true)
+      }
+    }, [project.video])
 
     return (
       <div
@@ -86,16 +110,18 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(
             
             {project.video ? (
               <video
+                ref={videoRef}
                 src={project.video}
                 autoPlay
                 loop
                 muted
                 playsInline
-                onLoadedData={() => setIsLoaded(true)}
+                onCanPlayThrough={() => setIsLoaded(true)}
                 className={`w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
               />
             ) : (
               <img
+                ref={imgRef}
                 src={project.img.startsWith('http') ? `${project.img}&w=1200&auto=format,compress&fm=webp` : project.img}
                 alt={project.title}
                 width={1200}

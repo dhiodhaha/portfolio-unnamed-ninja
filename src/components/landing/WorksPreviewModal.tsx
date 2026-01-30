@@ -1,4 +1,4 @@
-import { useEffect, useCallback, useState } from 'react'
+import { useEffect, useCallback, useState, useRef } from 'react'
 import { type Project } from '@/data/projects'
 import { Skeleton } from '../Skeleton'
 import gsap from 'gsap'
@@ -25,10 +25,15 @@ export function WorksPreviewModal({
 }: WorksPreviewModalProps) {
   const lenis = useLenis()
   const [isLoaded, setIsLoaded] = useState(false)
+  const imgRef = useRef<HTMLImageElement>(null)
 
-  // Reset loaded state when project changes
+  // Handle cached images & Reset when project changes
   useEffect(() => {
-    setIsLoaded(false)
+    if (imgRef.current?.complete) {
+      setIsLoaded(true)
+    } else {
+      setIsLoaded(false)
+    }
   }, [currentProject?.id])
 
   // Handle escape key and arrow navigation
@@ -142,6 +147,7 @@ export function WorksPreviewModal({
             >
                  {!isLoaded && <Skeleton className="absolute inset-0 z-10" />}
                  <img
+                    ref={imgRef}
                     src={currentProject.img}
                     alt={currentProject.title}
                     onLoad={() => setIsLoaded(true)}

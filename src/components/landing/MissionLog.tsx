@@ -17,7 +17,7 @@ export function MissionLog() {
 
         <div className="space-y-12">
           <p className="text-xl md:text-2xl font-medium leading-snug text-neutral-800">
-            Architecting tactile interfaces and digital systems with a pulse. We bridge design and engineering to build digital products with clarity, purpose, and longevity.
+            We bridge design and engineering to build digital products with clarity, purpose, and longevity.
           </p>
 
 {/* 

@@ -70,7 +70,6 @@ export const EXPLORATIONS: Project[] = [
   },
   { id: 101, title: 'Devscale Dashboard', category: 'Exploration', year: '2024', img: '/exploration/devscale-dashboard.webp', thumbnail: '/exploration/devscale-dashboard.webp' },
   { id: 102, title: 'Devscale Landing', category: 'Exploration', year: '2024', img: '/exploration/preview-devscale-landing.webp', thumbnail: '/exploration/devscale-landing.webp' },
-  { id: 103, title: 'Minimal Eyewear', category: 'Exploration', year: '2024', img: '/exploration/preview-minimal-eyewear.webp', thumbnail: '/exploration/minimal-eyewear.webp' },
   { id: 104, title: 'GlobalClean App', category: 'Exploration', year: '2024', img: '/exploration/preview-globalclean-app.webp', thumbnail: '/exploration/globalclean-app.webp' },
   { id: 105, title: 'Jagorawi Concept', category: 'Exploration', year: '2024', img: '/exploration/preview-jagorawi-concept.webp', thumbnail: '/exploration/jagorawi-concept.webp' },
   { id: 106, title: 'Kumpul Coworking', category: 'Exploration', year: '2024', img: '/exploration/preview-kumpul-coworking.webp', thumbnail: '/exploration/kumpul-coworking.webp' },

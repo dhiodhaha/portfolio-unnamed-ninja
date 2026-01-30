@@ -18,10 +18,18 @@ function WorksItem({
   onClick: () => void 
 }) {
   const slideshowRef = useRef<HTMLDivElement>(null)
+  const imgRef = useRef<HTMLImageElement>(null)
   const [isLoaded, setIsLoaded] = useState(false)
 
+  // Handle cached images
   useEffect(() => {
-    if (!work.slides || work.slides.length < 2 || !slideshowRef.current) return
+    if (imgRef.current?.complete) {
+      setIsLoaded(true)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!work.slides || work.slides.length < 2 || !slideshowRef.current || !isLoaded) return
 
     const slides = slideshowRef.current.querySelectorAll('.slide-image')
     if (slides.length < 2) return
@@ -65,6 +73,7 @@ function WorksItem({
           work.slides.map((slide, i) => (
             <img
               key={i}
+              ref={i === 0 ? imgRef : null}
               src={slide}
               alt={`${work.title} - Slide ${i + 1}`}
               className={`slide-image absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
@@ -76,6 +85,7 @@ function WorksItem({
         ) : (
           // Static Mode: Single image with hover effect
           <img
+            ref={imgRef}
             src={thumbnailSrc}
             alt={work.title}
             width={800}
