@@ -1,5 +1,6 @@
-import { forwardRef, useImperativeHandle, useRef, useEffect } from 'react'
+import { forwardRef, useImperativeHandle, useRef, useEffect, useState } from 'react'
 import { PROJECTS, type Project } from '@/data/projects'
+import { Skeleton } from '../Skeleton'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -63,6 +64,8 @@ interface ProjectCardProps {
 
 const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(
   function ProjectCard({ project, isPriority }, ref) {
+    const [isLoaded, setIsLoaded] = useState(false)
+
     return (
       <div
         ref={ref}
@@ -79,6 +82,8 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(
 
           {/* Image Container */}
           <div className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-100 rounded-sm mb-12">
+            {!isLoaded && <Skeleton className="absolute inset-0 z-10" />}
+            
             {project.video ? (
               <video
                 src={project.video}
@@ -86,17 +91,19 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(
                 loop
                 muted
                 playsInline
-                className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ease-out"
+                onLoadedData={() => setIsLoaded(true)}
+                className={`w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
               />
             ) : (
               <img
-                src={`${project.img}&w=1200&auto=format,compress&fm=webp`}
+                src={project.img.startsWith('http') ? `${project.img}&w=1200&auto=format,compress&fm=webp` : project.img}
                 alt={project.title}
                 width={1200}
                 height={900}
+                onLoad={() => setIsLoaded(true)}
                 loading={isPriority ? "eager" : "lazy"}
                 decoding="async"
-                className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ease-out"
+                className={`w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
               />
             )}
           </div>

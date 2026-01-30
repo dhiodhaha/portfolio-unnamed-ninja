@@ -9,7 +9,7 @@ export function HeroDescription() {
           fontWeight: 500,
         }}
       >
-        UNNAMED is a creative design engineering factory that crafts one-of-a-kind
+        UNNAMED+ is a creative design engineering factory that crafts one-of-a-kind
         experiences for the web. We bridge the gap between imagination and
         reality, transforming your values and philosophy into digital
         storytelling. Our team of passionate artisans curates memorable

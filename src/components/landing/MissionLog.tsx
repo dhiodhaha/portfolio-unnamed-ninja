@@ -1,5 +1,3 @@
-import { CLIENTS } from '@/data/projects'
-
 export function MissionLog() {
   return (
     <aside className="w-full md:w-[50%] h-auto md:h-screen p-8 md:p-12 flex flex-col justify-between bg-white md:sticky md:top-0 z-10 md:overflow-hidden">
@@ -19,7 +17,7 @@ export function MissionLog() {
 
         <div className="space-y-12">
           <p className="text-xl md:text-2xl font-medium leading-snug text-neutral-800">
-            Architecting tactile interfaces and digital systems with a pulse.
+            Architecting tactile interfaces and digital systems with a pulse. We bridge design and engineering to build digital products with clarity, purpose, and longevity.
           </p>
 
 {/* 

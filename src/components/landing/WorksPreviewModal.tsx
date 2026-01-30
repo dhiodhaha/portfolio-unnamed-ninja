@@ -1,5 +1,6 @@
-import { useEffect, useCallback } from 'react'
+import { useEffect, useCallback, useState } from 'react'
 import { type Project } from '@/data/projects'
+import { Skeleton } from '../Skeleton'
 import gsap from 'gsap'
 import { useLenis } from './SmoothScroll'
 
@@ -23,6 +24,12 @@ export function WorksPreviewModal({
   hasPrev,
 }: WorksPreviewModalProps) {
   const lenis = useLenis()
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  // Reset loaded state when project changes
+  useEffect(() => {
+    setIsLoaded(false)
+  }, [currentProject?.id])
 
   // Handle escape key and arrow navigation
   const handleKeyDown = useCallback(
@@ -130,13 +137,15 @@ export function WorksPreviewModal({
         >
             <div 
               id="preview-image"
-              className="w-full max-w-[95vw] md:max-w-6xl shadow-2xl border border-white/5 rounded-sm bg-neutral-900/10"
+              className="relative w-full max-w-[95vw] md:max-w-6xl shadow-2xl border border-white/5 rounded-sm bg-neutral-900/10 overflow-hidden min-h-[300px]"
               onClick={(e) => e.stopPropagation()}
             >
+                 {!isLoaded && <Skeleton className="absolute inset-0 z-10" />}
                  <img
                     src={currentProject.img}
                     alt={currentProject.title}
-                    className="block w-full h-auto"
+                    onLoad={() => setIsLoaded(true)}
+                    className={`block w-full h-auto transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
                   />
             </div>
         </div>

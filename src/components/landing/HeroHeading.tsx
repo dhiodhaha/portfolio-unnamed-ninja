@@ -9,7 +9,7 @@ export function HeroHeading() {
         opacity: "var(--hero-heading-opacity)",
       }}
     >
-      UNNAMED
+      UNNAMED+
     </h1>
   );
 }

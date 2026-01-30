@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { WORKS, EXPLORATIONS, type Project } from '@/data/projects'
 import { WorksPreviewModal } from './WorksPreviewModal'
+import { Skeleton } from '../Skeleton'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -17,6 +18,7 @@ function WorksItem({
   onClick: () => void 
 }) {
   const slideshowRef = useRef<HTMLDivElement>(null)
+  const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
     if (!work.slides || work.slides.length < 2 || !slideshowRef.current) return
@@ -28,7 +30,6 @@ function WorksItem({
     gsap.set(slides, { opacity: 0 })
     gsap.set(slides[0], { opacity: 1 })
 
-    let currentIndex = 0
     const totalSlides = slides.length
 
     // Create the crossfade loop
@@ -43,7 +44,7 @@ function WorksItem({
     return () => {
       tl.kill()
     }
-  }, [work.slides])
+  }, [work.slides, isLoaded])
 
   const thumbnailSrc = work.thumbnail || (work.img.startsWith('http') ? `${work.img}&w=800&auto=format,compress&fm=webp` : work.img)
 
@@ -57,6 +58,8 @@ function WorksItem({
         ref={slideshowRef}
         className="relative w-full aspect-[4/3] overflow-hidden rounded-[var(--radius-sm)] mb-[var(--spacing-4)] bg-neutral-300"
       >
+        {!isLoaded && <Skeleton className="absolute inset-0 z-10" />}
+        
         {work.slides && work.slides.length > 1 ? (
           // Slideshow Mode: Stack all slides
           work.slides.map((slide, i) => (
@@ -64,7 +67,8 @@ function WorksItem({
               key={i}
               src={slide}
               alt={`${work.title} - Slide ${i + 1}`}
-              className="slide-image absolute inset-0 w-full h-full object-cover"
+              className={`slide-image absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+              onLoad={() => i === 0 && setIsLoaded(true)}
               loading={i === 0 ? 'eager' : 'lazy'}
               decoding="async"
             />
@@ -76,9 +80,10 @@ function WorksItem({
             alt={work.title}
             width={800}
             height={600}
+            onLoad={() => setIsLoaded(true)}
             loading="lazy"
             decoding="async"
-            className="w-full h-full object-cover transform transition-transform duration-[var(--duration-slower)] ease-[var(--easing-out)] group-hover:scale-110 will-change-transform"
+            className={`w-full h-full object-cover transform transition-all duration-[var(--duration-slower)] ease-[var(--easing-out)] group-hover:scale-110 will-change-transform ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
           />
         )}
       </div>
