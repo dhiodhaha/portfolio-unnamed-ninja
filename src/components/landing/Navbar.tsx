@@ -7,9 +7,11 @@ export function Navbar() {
         to="/"
         className="nav-item flex items-center gap-4 pointer-events-auto cursor-pointer group"
       >
-        <div className="w-8 h-8 bg-white flex items-center justify-center rounded-sm group-hover:rotate-90 transition-transform duration-500">
-           <span className="text-black text-2xl font-black leading-none pb-1">+</span>
-        </div>
+        <img 
+          src="/favicon.svg" 
+          alt="UNNAMED+ Logo" 
+          className="w-8 h-8 group-hover:rotate-90 transition-transform duration-500 invert"
+        />
         <span className="font-black tracking-tighter text-xl uppercase">
           UNNAMED+
         </span>
