@@ -18,12 +18,12 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'Unnamed Studio — Design Engineering Collective',
+        title: 'UNNAMED+ — Design Engineering Factory',
       },
       {
         name: 'description',
         content:
-          'Kolektif desain engineering yang membangun agen koordinasi untuk para pendiri masa depan.',
+          'We bridge design and engineering to build digital products with clarity, purpose, and longevity.',
       },
     ],
     links: [
