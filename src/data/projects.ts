@@ -10,6 +10,15 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
+    id: 3,
+    title: 'Jagorawi Golf',
+    category: 'FULL SITE',
+    year: '2024',
+    img: '',
+    video: '/best/jagorawi-golf-showcase.mp4',
+    link: 'https://jagorawi.com',
+  },
+  {
     id: 1,
     title: 'Devault App',
     category: 'Smart AI Bookmark App',
@@ -28,11 +37,13 @@ export const PROJECTS: Project[] = [
     link: 'https://ptgunungkendalidocking.com',
   },
   {
-    id: 3,
-    title: 'Neural Interface',
-    category: 'Human Machine Interaction',
+    id: 4,
+    title: 'Blink Beauty Clinic',
+    category: 'FULL SITE',
     year: '2024',
-    img: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2564',
+    img: '',
+    video: '/best/blink-beauty-clinic-showcase.mp4',
+    link: 'https://blinkbeautyclinic.com',
   },
 ]
 

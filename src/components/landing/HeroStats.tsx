@@ -1,6 +1,6 @@
 export function HeroStats() {
   return (
-    <div className="flex justify-between items-end pb-2 md:pb-4 w-full">
+    <div className="hero-element flex justify-between items-end pb-2 md:pb-4 w-full">
       <span
         className="font-bold tracking-widest uppercase hidden md:block"
         style={{

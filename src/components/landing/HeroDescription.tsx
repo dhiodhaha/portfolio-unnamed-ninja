@@ -1,6 +1,6 @@
 export function HeroDescription() {
   return (
-    <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] md:w-[50vw] z-10">
+    <div className="hero-element absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] md:w-[50vw] z-10">
       <p
         className="text-center leading-relaxed tracking-tight"
         style={{

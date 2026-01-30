@@ -31,18 +31,12 @@ export function CustomCursor() {
       
       if (isClickable) {
         gsap.to(pulse, { 
-          scale: 1, 
+          scale: 1.5, 
           opacity: 1, 
+          backgroundColor: 'white',
+          mixBlendMode: 'difference',
           duration: 0.3, 
-          ease: 'back.out(1.7)' 
-        })
-        // Pulse animation
-        gsap.to(pulse, {
-            scale: 1.2,
-            duration: 0.8,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut"
+          ease: 'power2.out' 
         })
       }
     }
@@ -52,10 +46,10 @@ export function CustomCursor() {
       const isClickable = target.closest('a, button, [role="button"], .cursor-pointer')
 
       if (isClickable) {
-        gsap.killTweensOf(pulse) // Stop pulse
         gsap.to(pulse, { 
           scale: 0, 
           opacity: 0, 
+          backgroundColor: 'transparent',
           duration: 0.2
         })
       }
@@ -88,10 +82,10 @@ export function CustomCursor() {
             +
         </span>
         
-        {/* Pulsing Circle */}
+        {/* Hover Square */}
         <div 
           ref={pulseRef}
-          className="absolute w-8 h-8 rounded-full border border-white opacity-0"
+          className="absolute w-6 h-6 border border-white opacity-0"
         />
     </div>
   )

@@ -114,8 +114,8 @@ export function WorksSection() {
               onClick={() => handleOpenModal(work)}
               className="group works-item cursor-pointer break-inside-avoid mb-[var(--spacing-6)] opacity-0"
             >
-              {/* Image Container - Intrinsic aspect ratio */}
-              <div className="relative w-full overflow-hidden rounded-[var(--radius-sm)] mb-[var(--spacing-4)] bg-neutral-300">
+              {/* Image Container - Fixed 4:3 aspect ratio */}
+              <div className="relative w-full aspect-[4/3] overflow-hidden rounded-[var(--radius-sm)] mb-[var(--spacing-4)] bg-neutral-300">
                 <img
                   src={work.img.startsWith('http') ? `${work.img}&w=800&auto=format,compress&fm=webp` : work.img}
                   alt={work.title}
@@ -123,7 +123,7 @@ export function WorksSection() {
                   height={1200}
                   loading="lazy"
                   decoding="async"
-                  className="w-full h-auto object-cover transform transition-transform duration-[var(--duration-slower)] ease-[var(--easing-out)] group-hover:scale-110 will-change-transform"
+                  className="w-full h-full object-cover transform transition-transform duration-[var(--duration-slower)] ease-[var(--easing-out)] group-hover:scale-110 will-change-transform"
                 />
               </div>
 
