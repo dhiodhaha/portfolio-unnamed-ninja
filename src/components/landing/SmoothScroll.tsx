@@ -25,15 +25,10 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
 
     setLenis(lenisInstance)
 
-    function raf(time: number) {
-      lenisInstance.raf(time)
-      requestAnimationFrame(raf)
-    }
-
-    requestAnimationFrame(raf)
-
     // Sync with GSAP ScrollTrigger
     lenisInstance.on('scroll', ScrollTrigger.update)
+    
+    // Use GSAP ticker as the sole driver for Lenis to ensure sync
     gsap.ticker.add((time) => {
       lenisInstance.raf(time * 1000)
     })

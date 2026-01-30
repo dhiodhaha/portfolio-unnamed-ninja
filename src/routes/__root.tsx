@@ -5,6 +5,8 @@ import { TanStackDevtools } from '@tanstack/react-devtools'
 import appCss from '../styles.css?url'
 import { SmoothScroll } from '../components/landing/SmoothScroll'
 
+import { NotFound } from '../components/NotFound'
+
 export const Route = createRootRoute({
   head: () => ({
     meta: [
@@ -36,11 +38,6 @@ export const Route = createRootRoute({
       {
         rel: 'preconnect',
         href: 'https://fonts.gstatic.com',
-        crossOrigin: 'anonymous',
-      },
-      {
-        rel: 'dns-prefetch',
-        href: 'https://fonts.gstatic.com',
       },
       {
         rel: 'stylesheet',
@@ -51,6 +48,7 @@ export const Route = createRootRoute({
 
   component: RootComponent,
   shellComponent: RootDocument,
+  notFoundComponent: NotFound,
 })
 
 import { CustomCursor } from '../components/landing/CustomCursor'
