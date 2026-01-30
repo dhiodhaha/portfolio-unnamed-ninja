@@ -9,7 +9,7 @@ export function HeroStats() {
           letterSpacing: "var(--hero-stats-letter-spacing)",
         }}
       >
-        50+ Countries Visited
+        MINDCRAFTER
       </span>
       <span
         className="font-bold tracking-widest uppercase hidden md:block"
@@ -19,7 +19,7 @@ export function HeroStats() {
           letterSpacing: "var(--hero-stats-letter-spacing)",
         }}
       >
-        12+ Years of Experience
+        PIXEL+LOGIC
       </span>
       <span
         className="font-bold tracking-widest uppercase"
@@ -29,7 +29,7 @@ export function HeroStats() {
           letterSpacing: "var(--hero-stats-letter-spacing)",
         }}
       >
-        100+ Collaborations
+        DESIGN&ENGINEER
       </span>
     </div>
   );

@@ -6,6 +6,96 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+// Individual Work Item Component (handles slideshow logic)
+function WorksItem({ 
+  work, 
+  index, 
+  onClick 
+}: { 
+  work: Project
+  index: number
+  onClick: () => void 
+}) {
+  const slideshowRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!work.slides || work.slides.length < 2 || !slideshowRef.current) return
+
+    const slides = slideshowRef.current.querySelectorAll('.slide-image')
+    if (slides.length < 2) return
+
+    // Set initial state: first visible, rest hidden
+    gsap.set(slides, { opacity: 0 })
+    gsap.set(slides[0], { opacity: 1 })
+
+    let currentIndex = 0
+    const totalSlides = slides.length
+
+    // Create the crossfade loop
+    const tl = gsap.timeline({ repeat: -1, delay: 2 })
+
+    for (let i = 0; i < totalSlides; i++) {
+      const nextIndex = (i + 1) % totalSlides
+      tl.to(slides[i], { opacity: 0, duration: 1, ease: 'power2.inOut' }, `+=${2.5}`)
+        .to(slides[nextIndex], { opacity: 1, duration: 1, ease: 'power2.inOut' }, '<')
+    }
+
+    return () => {
+      tl.kill()
+    }
+  }, [work.slides])
+
+  const thumbnailSrc = work.thumbnail || (work.img.startsWith('http') ? `${work.img}&w=800&auto=format,compress&fm=webp` : work.img)
+
+  return (
+    <div 
+      onClick={onClick}
+      className="group works-item cursor-pointer mb-[var(--spacing-6)] opacity-0"
+    >
+      {/* Image Container - Fixed 4:3 aspect ratio */}
+      <div 
+        ref={slideshowRef}
+        className="relative w-full aspect-[4/3] overflow-hidden rounded-[var(--radius-sm)] mb-[var(--spacing-4)] bg-neutral-300"
+      >
+        {work.slides && work.slides.length > 1 ? (
+          // Slideshow Mode: Stack all slides
+          work.slides.map((slide, i) => (
+            <img
+              key={i}
+              src={slide}
+              alt={`${work.title} - Slide ${i + 1}`}
+              className="slide-image absolute inset-0 w-full h-full object-cover"
+              loading={i === 0 ? 'eager' : 'lazy'}
+              decoding="async"
+            />
+          ))
+        ) : (
+          // Static Mode: Single image with hover effect
+          <img
+            src={thumbnailSrc}
+            alt={work.title}
+            width={800}
+            height={600}
+            loading="lazy"
+            decoding="async"
+            className="w-full h-full object-cover transform transition-transform duration-[var(--duration-slower)] ease-[var(--easing-out)] group-hover:scale-110 will-change-transform"
+          />
+        )}
+      </div>
+
+      {/* Title & Info */}
+      <div className="flex items-baseline gap-[var(--spacing-2)]">
+        <span className="font-tech text-[length:var(--text-xs)] text-destructive uppercase tracking-[var(--tracking-widest)] font-[var(--font-weight-bold)]">
+          ({index + 1}) 
+        </span>
+        <h3 className="text-[length:var(--text-sm)] font-[var(--font-weight-black)] uppercase tracking-[var(--tracking-wider)] text-foreground group-hover:text-destructive transition-colors duration-[var(--duration-slow)]">
+          {work.title}
+        </h3>
+      </div>
+    </div>
+  )
+}
+
 export function WorksSection() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -33,15 +123,7 @@ export function WorksSection() {
 
       // Batch animate grid items
       ScrollTrigger.batch('.works-item', {
-        onEnter: (elements, triggers) => {
-          // Sort elements by visual vertical position to handle CSS masonry DOM order
-          // This ensures animations flow Top -> Bottom across columns, not Col 1 -> Col 2
-          elements.sort((a, b) => {
-            const rectA = (a as HTMLElement).getBoundingClientRect();
-            const rectB = (b as HTMLElement).getBoundingClientRect();
-            return rectA.top - rectB.top || rectA.left - rectB.left;
-          });
-
+        onEnter: (elements) => {
           gsap.fromTo(
             elements,
             { opacity: 0, y: 60, scale: 0.95 },
@@ -71,7 +153,7 @@ export function WorksSection() {
 
   const handleCloseModal = () => {
     setIsModalOpen(false)
-    setTimeout(() => setSelectedProject(null), 300) // Wait for animation
+    setTimeout(() => setSelectedProject(null), 300)
   }
 
   const handleNext = () => {
@@ -106,37 +188,15 @@ export function WorksSection() {
           </h2>
         </div>
 
-        {/* Works Masonry Grid */}
-        <div className="columns-2 md:columns-4 gap-[var(--spacing-4)] md:gap-[var(--spacing-6)]">
+        {/* Works Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-[var(--spacing-4)] md:gap-[var(--spacing-6)]">
           {ALL_WORKS.map((work, index) => (
-            <div 
-              key={work.id} 
+            <WorksItem
+              key={work.id}
+              work={work}
+              index={index}
               onClick={() => handleOpenModal(work)}
-              className="group works-item cursor-pointer break-inside-avoid mb-[var(--spacing-6)] opacity-0"
-            >
-              {/* Image Container - Fixed 4:3 aspect ratio */}
-              <div className="relative w-full aspect-[4/3] overflow-hidden rounded-[var(--radius-sm)] mb-[var(--spacing-4)] bg-neutral-300">
-                <img
-                  src={work.img.startsWith('http') ? `${work.img}&w=800&auto=format,compress&fm=webp` : work.img}
-                  alt={work.title}
-                  width={800}
-                  height={1200}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover transform transition-transform duration-[var(--duration-slower)] ease-[var(--easing-out)] group-hover:scale-110 will-change-transform"
-                />
-              </div>
-
-              {/* Title & Info */}
-              <div className="flex items-baseline gap-[var(--spacing-2)]">
-                <span className="font-tech text-[length:var(--text-xs)] text-destructive uppercase tracking-[var(--tracking-widest)] font-[var(--font-weight-bold)]">
-                  ({index + 1}) 
-                </span>
-                <h3 className="text-[length:var(--text-sm)] font-[var(--font-weight-black)] uppercase tracking-[var(--tracking-wider)] text-foreground group-hover:text-destructive transition-colors duration-[var(--duration-slow)]">
-                  {work.title}
-                </h3>
-              </div>
-            </div>
+            />
           ))}
         </div>
       </div>

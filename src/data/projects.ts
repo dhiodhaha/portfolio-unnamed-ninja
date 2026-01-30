@@ -4,13 +4,15 @@ export interface Project {
   category: string
   year: string
   img: string
+  thumbnail?: string
+  slides?: string[]
   video?: string
   link?: string
 }
 
 export const PROJECTS: Project[] = [
   {
-    id: 3,
+    id: 1,
     title: 'Jagorawi Golf',
     category: 'FULL SITE',
     year: '2024',
@@ -19,7 +21,7 @@ export const PROJECTS: Project[] = [
     link: 'https://jagorawi.com',
   },
   {
-    id: 1,
+    id: 2,
     title: 'Devault App',
     category: 'Smart AI Bookmark App',
     year: '2026',
@@ -28,7 +30,7 @@ export const PROJECTS: Project[] = [
     link: 'http://devault.app',
   },
   {
-    id: 2,
+    id: 3,
     title: 'PT Gunung Kendali',
     category: 'LANDING PAGE',
     year: '2025',
@@ -49,17 +51,32 @@ export const PROJECTS: Project[] = [
 
 export const WORKS: Project[] = []
 
-export const CLIENTS = ['Vercel', 'Linear', 'Stripe', 'Apple', 'OpenAI', 'Mobbin']
+export const CLIENTS = ['Devscale', 'Blink', 'Devault', 'Kendali', 'Jagorawi']
 
 export const EXPLORATIONS: Project[] = [
-  { id: 13, title: 'Original', category: 'Exploration', year: '2024', img: '/exploration/exploration-original.webp' },
-  { id: 14, title: 'Concept', category: 'Exploration', year: '2024', img: '/exploration/exploration-concept.webp' },
-  { id: 15, title: 'Interface', category: 'Exploration', year: '2024', img: '/exploration/exploration-interface.webp' },
-  { id: 16, title: 'Prototype', category: 'Exploration', year: '2024', img: '/exploration/exploration-prototype.webp' },
-  { id: 17, title: 'Visual', category: 'Exploration', year: '2024', img: '/exploration/exploration-visual.webp' },
-  { id: 18, title: 'Design', category: 'Exploration', year: '2024', img: '/exploration/exploration-design.webp' },
-  { id: 19, title: 'Experiment', category: 'Exploration', year: '2024', img: '/exploration/exploration-experiment.webp' },
-  { id: 20, title: 'Study', category: 'Exploration', year: '2024', img: '/exploration/exploration-study.webp' },
-  { id: 21, title: 'Sketch', category: 'Exploration', year: '2024', img: '/exploration/exploration-sketch.webp' },
-  { id: 22, title: 'Mataro Eyewear', category: 'Exploration', year: '2024', img: '/exploration/mataro-eyewear.webp' },
+  {
+    id: 200,
+    title: 'Design Process',
+    category: 'Exploration',
+    year: '2024',
+    img: '/exploration/exploration-interface.webp',
+    thumbnail: '/exploration/exploration-interface.webp',
+    slides: [
+      '/exploration/exploration-interface.webp',
+      '/exploration/exploration-original.webp',
+      '/exploration/exploration-study.webp',
+      '/exploration/exploration-sketch.webp'
+    ]
+  },
+  { id: 101, title: 'Devscale Dashboard', category: 'Exploration', year: '2024', img: '/exploration/devscale-dashboard.webp', thumbnail: '/exploration/devscale-dashboard.webp' },
+  { id: 102, title: 'Devscale Landing', category: 'Exploration', year: '2024', img: '/exploration/preview-devscale-landing.webp', thumbnail: '/exploration/devscale-landing.webp' },
+  { id: 103, title: 'Minimal Eyewear', category: 'Exploration', year: '2024', img: '/exploration/preview-minimal-eyewear.webp', thumbnail: '/exploration/minimal-eyewear.webp' },
+  { id: 104, title: 'GlobalClean App', category: 'Exploration', year: '2024', img: '/exploration/preview-globalclean-app.webp', thumbnail: '/exploration/globalclean-app.webp' },
+  { id: 105, title: 'Jagorawi Concept', category: 'Exploration', year: '2024', img: '/exploration/preview-jagorawi-concept.webp', thumbnail: '/exploration/jagorawi-concept.webp' },
+  { id: 106, title: 'Kumpul Coworking', category: 'Exploration', year: '2024', img: '/exploration/preview-kumpul-coworking.webp', thumbnail: '/exploration/kumpul-coworking.webp' },
+  { id: 107, title: 'Minimal Portfolio', category: 'Exploration', year: '2024', img: '/exploration/preview-minimal-portfolio.webp', thumbnail: '/exploration/minimal-portfolio.webp' },
+  { id: 108, title: 'Nova OS', category: 'Exploration', year: '2024', img: '/exploration/preview-nova-os.webp', thumbnail: '/exploration/nova-os.webp' },
+  { id: 109, title: 'Parcels Tracking', category: 'Exploration', year: '2024', img: '/exploration/preview-parcels-app.webp', thumbnail: '/exploration/parcels-app.webp' },
+  { id: 110, title: 'Sacred Forest', category: 'Exploration', year: '2024', img: '/exploration/preview-sacred-monkey-forest.webp', thumbnail: '/exploration/sacred-monkey-forest.webp' },
+  { id: 22, title: 'Mataro Eyewear', category: 'Exploration', year: '2024', img: '/exploration/mataro-eyewear.webp', thumbnail: '/exploration/mataro-eyewear.webp' },
 ]

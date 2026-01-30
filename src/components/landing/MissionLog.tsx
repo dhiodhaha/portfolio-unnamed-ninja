@@ -13,18 +13,19 @@ export function MissionLog() {
         </div>
 
         <h2 className="text-7xl md:text-[7vw] leading-[0.85] font-black tracking-tighter mb-8 uppercase text-black">
-          What <br />
-          Are We?
+          Who <br />
+          We Are?
         </h2>
 
         <div className="space-y-12">
           <p className="text-xl md:text-2xl font-medium leading-snug text-neutral-800">
-            Membangun interface taktil dan sistem digital yang memiliki jiwa.
+            Architecting tactile interfaces and digital systems with a pulse.
           </p>
 
+{/* 
           <div>
             <h3 className="text-[10px] uppercase tracking-[0.3em] font-black text-neutral-500 mb-6">
-              Ecosystem Partner
+              Our Client
             </h3>
             <div className="flex flex-wrap gap-x-6 gap-y-3">
               {CLIENTS.map((client) => (
@@ -36,7 +37,8 @@ export function MissionLog() {
                 </span>
               ))}
             </div>
-          </div>
+          </div> 
+          */}
         </div>
       </div>
 
@@ -44,10 +46,10 @@ export function MissionLog() {
       <footer className="pt-10 flex justify-between items-end">
         <div className="space-y-2">
           <span className="block text-[10px] font-black uppercase tracking-widest text-neutral-500">
-            Loc: JKT / 6.2088° S
+            Loc: ID / 6.2088° S
           </span>
           <p className="text-[9px] uppercase tracking-[0.2em] font-black text-neutral-500 leading-relaxed">
-            © 2026 UNNAMED STUDIO <br /> ENCRYPTED CONNECTION
+            © 2026 UNNAMED+STUDIO <br /> 
           </p>
         </div>
         
